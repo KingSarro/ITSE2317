@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author frost
- *
- */
-module practiceEclipse {
-}
