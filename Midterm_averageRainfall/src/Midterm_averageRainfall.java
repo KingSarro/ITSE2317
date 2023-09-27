@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 //Sharri'a Sneed
 //ITSE 2317
-//9-26-23
-//Desc: Program made to calculate the average rainfall over the course of x years
+//9-27-23
+//Desc: Program made to calculate the average water bill over the course of x years
 public class Midterm_averageRainfall {
 	public static void main(String[] args) {
 		//Calls the displayResults
@@ -16,22 +16,22 @@ public class Midterm_averageRainfall {
 		Scanner userInput = new Scanner(System.in);
 		//Initialized variables used to hold the calculated information
 		int years = 0;
-		double totalRainfall = 0;
-		double averageRainfall = 0;
+		double totalBill = 0;
+		double averageBill = 0;
 		
 		//Saves the value of getYears to the variable years
 		years = getYears(userInput);
 		//Saves the value of calculateTotalRainfall to the variable totalRainfall
-		totalRainfall = calculateTotalRainfall(userInput, years);
+		totalBill = calculateTotalWaterBill(userInput, years);
 		//Saves the value of calculateAverageRainfall to the the variable averageRainfall
-		averageRainfall = calculateAverageRainfall(years, totalRainfall);
+		averageBill = calculateAverageWaterBill(years, totalBill);
 		
 		//closes the Scanner object
 		userInput.close();
 		
 		//Displays the result of the calculated average rainfall to the user
 		System.out.println();
-		System.out.print("The average rainfall over " + years + " years is : " + averageRainfall);
+		System.out.print("The average water bill price over " + years + " years is : " + averageBill);
 		
 	}//closes the displayResults method
 	
@@ -60,11 +60,11 @@ public class Midterm_averageRainfall {
 	}//closes getYears method
 	
 /*  [Created method to calculate the total amount of rainfall over the course of x years]  */	
-	static double calculateTotalRainfall(Scanner scannerObject, int years) {
+	static double calculateTotalWaterBill(Scanner scannerObject, int years) {
 		
 		//Initialized a variable to hold the calculated values inputed by the user
-		double inputedRain = -1; //To make sure that a incorrectly inputed value doesn't mess up the calculation
-		double totalRain = 0;
+		double inputedCost = -1; //To make sure that a incorrectly inputed value doesn't mess up the calculation
+		double totalCost = 0;
 		//Initialized a variable to be used as a counter for the for-loops
 		int yCounter = 1;
 		
@@ -79,36 +79,36 @@ public class Midterm_averageRainfall {
 			for(; mCounter <= 12; mCounter++) {//the 2nd for-loop
 				System.out.print("\n\tEnter the rainfall of month " + mCounter + ": \n\t\t>> ");
 				//While the variable inputedRain does not hold a valid value, run this loop...
-				while( !(inputedRain >= 0) ) {
+				while( !(inputedCost >= 0) ) {
 					//saves the user's input to the variable inputedRain
-					inputedRain = scannerObject.nextDouble();
+					inputedCost = scannerObject.nextDouble();
 					//If the variable inputedRain does not hold a valid value, run this loop...
-					if(!(inputedRain >= 0)) {
+					if(!(inputedCost >= 0)) {
 						//Displays an error message to tell the user the correct info to put in
 						System.out.println();
 						System.out.print("\tPlease enter a positve number or 0: \n\t\t>> ");
 					}//closes the 1st if statement
 				}//closes the 1st while loop
 				//Adds the value of inputedRain to the value of totalRain
-				totalRain += inputedRain;
+				totalCost += inputedCost;
 				//resets the value of inputed rain
-				inputedRain = -1;
+				inputedCost = -1;
 			}//closes the 2nd for-loop
 		}//closes the 1st for-loop
 		
 		//returns the value of totalRain to where the method was called
-		return totalRain;
+		return totalCost;
 	}//closes calculateTotalRainFall
 	
 /*  [Created method to calculate the average of total amount of rainfall of x years]  */	
-	static double calculateAverageRainfall(int years, double totalRainfall) {
+	static double calculateAverageWaterBill(int years, double totalWaterBill) {
 		//Initialized variables to hold the calculated values
 		int totalMonths = years *12;
-		double averageRainfall = 0;
+		double averageWatterBill = 0;
 		//Gets the average of the totalRainfall
-		averageRainfall = totalRainfall / totalMonths;
+		averageWatterBill = totalWaterBill / totalMonths;
 		//returns the value of averageRainfall to where the method was called
-		return averageRainfall;
+		return averageWatterBill;
 	}
 
 }//closes Midterm_averageRainfall

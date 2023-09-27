@@ -1,10 +1,11 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 //Sharri'a Sneed
 //ITSE 2317
-//9-22-23
+//9-27-23
 //Create a program to calculate how much money someone would end with for x (user inputed amount)
-//if their money doubled everyday, starting with 1 penny
+//if their money doubled everyday, starting with 1 dime
 
 public class Midterm_PenniesForPay {
 	public static void main(String args[]) {
@@ -18,7 +19,7 @@ public class Midterm_PenniesForPay {
 		Scanner userInput = new Scanner(System.in);
 		//Initializes variables to hold the number of days, current day, and current money
 		int numOfDays = 1;
-		double money = 0.01;
+		double money = 0.10;
 		int curDay = 1;
 		
 		//Prompts the user to input the number of days they wish to check
@@ -27,18 +28,19 @@ public class Midterm_PenniesForPay {
 		userInput.close();//closes Scanner object named userInput
 		System.out.println();
 		
-		//calls the function displayDayResults, which was crated to display the calculated results
+		//calls the function displayDayResults, which was created to display the calculated results
 		//to the user trough the console
 		displayDayResults(numOfDays,curDay,money);
 	}//closes getNumberOfDays
 	
 	//Created a method to display the result of the day
 	static void displayDayResults(int totalDays, int currentDay, double currentMoney) {
+		DecimalFormat moneyFormat = new DecimalFormat("0.00");
 		//While the last day hasn't been reached, run this...
 		while (currentDay != totalDays+1) {
 			//If it's the first day, do this...
 			if (currentDay == 1) {
-				System.out.println("Day " + currentDay + ":\t $" + currentMoney);
+				System.out.println("Day " + currentDay + ":\t $" + moneyFormat.format(currentMoney));
 			}//closes if statement
 			
 			//If it's not the first day, do this...
@@ -46,7 +48,7 @@ public class Midterm_PenniesForPay {
 				//call the calculatePay function and save its returned value to current money
 				currentMoney = calculatePay(currentMoney);
 				//displays the results of the pays calculations with its corresponding day
-				System.out.println("Day " + currentDay + ":\t $" + currentMoney);
+				System.out.println("Day " + currentDay + ":\t $" + moneyFormat.format(currentMoney));
 			}//Closes else statement
 			
 			//Adds 1 to the current day

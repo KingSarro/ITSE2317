@@ -1,9 +1,10 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 //Sharri'a Sneed
-//9-23-23
+//9-27-23
 //ITSE 2317
-//Created a program to pint out the corresponding letter of 5 (user inputed) grades along with
-// the grade average 
+//Created a program to print out a message based on the 5 (user inputed) batting score along with
+// the batting score average 
 
 public class Midterm_testGradeAndAverage {
 	public static void main(String args[]) {
@@ -12,16 +13,17 @@ public class Midterm_testGradeAndAverage {
 	
 	
 	static void displayResults(){
+		DecimalFormat battingScore = new DecimalFormat(".000");
 		//Initialized 2 variables to hold two calculated values
-		double gradeTotal = 0;
-		double gradeAverage = 0;
+		double batTotal = 0;
+		double batAverage = 0;
 		//Saves the returned value of getGrade to gradeTotal
-		gradeTotal = getGrade();
+		batTotal = getGrade();
 		//Saves the returned value of calculateAverage to gradeAverage
-		gradeAverage = calculateAverage(gradeTotal);
+		batAverage = calculateAverage(batTotal);
 		//Displays the message of the grades average to the user through the console
 		System.out.println("--------------------------------------------");
-		System.out.println("The average of the 5 grades is:     " + gradeAverage);
+		System.out.println("The batting score average is:  " + battingScore.format(batAverage));
 	}//closes displayResults method
 	
 	
@@ -29,51 +31,51 @@ public class Midterm_testGradeAndAverage {
 		//Created a Scanner object to get inputs from the user
 		Scanner userInput = new Scanner(System.in);
 		//Initializes variables to hold the grades and their calculation 
-		int grade = 0;
+		double batScore = 0;
 		int counter = 1;
-		double gradeTotal = 0;
+		double batAvg = 0;
 		
 		//while the 5th grade hasn't been entered...
 		while (counter != 5+1) {
 			//Prompts the user it input the 1 of the 5 grades
-			System.out.print("Please enter grade " + counter + ": ");
-			grade = userInput.nextInt(); //saves the user's input to grade
-			gradeTotal += grade;// adds the inputed grade to gradeAverage
-			calculateLetterGrade(grade);//calls to get the letter grade of the inputed number grade
+			System.out.print("Please enter score number " + counter + ": ");
+			batScore = userInput.nextDouble(); //saves the user's input to grade
+			batAvg += batScore;// adds the inputed grade to gradeAverage
+			calculateBattingAverage(batScore);//calls to get the letter grade of the inputed number grade
 			//Adds 1 to the counter
 			counter++;
 		}//closes the 1st while loop 
 		userInput.close(); //Closes the user object
 		//returns the value of grade total to where this method was called from
-		return gradeTotal;
+		return batAvg;
 	}//closes getGrade method
 	
 	
-	static void calculateLetterGrade(int numberGrade){
-		if (numberGrade >= 90 && numberGrade <= 100) {
-			System.out.print("\t|  A\n");
+	static void calculateBattingAverage(double battingScore){
+		if (battingScore >= .303 && battingScore <= .338) {
+			System.out.print("\t> Excellent Average\n");
 		}//closes if statement
-		else if (numberGrade >= 80 && numberGrade < 90) {
-			System.out.print("\t|  B\n");
+		else if (battingScore >= .267 && battingScore < .302 ) {
+			System.out.print("\t> Good Average\n");
 		}//closes 1st else if statement
-		else if (numberGrade >= 70 && numberGrade < 80) {
-			System.out.print("\t|  C\n");
+		else if (battingScore >= .231 && battingScore < .266) {
+			System.out.print("\t> Normal\n");
 		}//closes 2nd else if statement
-		else if (numberGrade >= 60 && numberGrade < 70) {
-			System.out.print("\t|  D\n");
+		else if (battingScore >= .195  && battingScore < .230) {
+			System.out.print("\t> Below Average\n");
 		}//closes 3rd else if statement
 		else {
-			System.out.print("\t|  F\n");
+			System.out.print("\t> Needs Improvement\n");
 		}//closes else statement
 		
 	}//closes displayResults method
 
 	
-	static double calculateAverage(double totalOfGrades) {
+	static double calculateAverage(double totalBattingScore) {
 		//Initialized a variable to hold the calculated value
 		double averageOf5 = 0;
 		//Divide the sum of all 5 grades by 5 to get the average of them
-		averageOf5 = totalOfGrades / 5;
+		averageOf5 = totalBattingScore / 5;
 		//return the value of averageOf5 to where the method was called
 		return averageOf5;
 	}//closes calculateAverage method
